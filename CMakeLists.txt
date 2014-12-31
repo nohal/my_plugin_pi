@@ -7,28 +7,28 @@
 # define minimum cmake version
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6.2)
 
-PROJECT(aisradar_pi)
+PROJECT(my_plugin_pi)
 
-SET(PACKAGE_NAME aisradar_pi)
-SET(VERBOSE_NAME AISRadar)
-SET(TITLE_NAME AISRadar)
-SET(CPACK_PACKAGE_CONTACT "Johan Sman")
+SET(PACKAGE_NAME my_plugin_pi)
+SET(VERBOSE_NAME MyPlugin)
+SET(TITLE_NAME MyPlugin)
+SET(CPACK_PACKAGE_CONTACT "Artiom Viter")
 
 SET(VERSION_MAJOR "0")
-SET(VERSION_MINOR "98")
+SET(VERSION_MINOR "1")
 
 #SET(CMAKE_BUILD_TYPE Debug)
 
 INCLUDE("cmake/PluginConfigure.cmake")
 
-SET(SRC_AISRADAR
+SET(SRC_MYPLUGIN
       src/my_plugin_pi.h
       src/my_plugin_pi.cpp
       src/icons.h
       src/icons.cpp
       
     )
-ADD_LIBRARY(${PACKAGE_NAME} SHARED ${SRC_AISRADAR})
+ADD_LIBRARY(${PACKAGE_NAME} SHARED ${SRC_MYPLUGIN})
 
 INCLUDE("cmake/PluginInstall.cmake")
 
