@@ -1,7 +1,7 @@
 
 
-#ifndef _GRIBPI_H_
-#define _GRIBPI_H_
+#ifndef _MYPLUGIN_H_
+#define _MYPLUGIN_H_
 
 #include "wx/wxprec.h"
 
@@ -10,8 +10,7 @@
   #include <wx/glcanvas.h>
 #endif //precompiled headers
 
-#define     PLUGIN_VERSION_MAJOR    2
-#define     PLUGIN_VERSION_MINOR    3
+#include "version.h"
 
 #define     MY_API_VERSION_MAJOR    1
 #define     MY_API_VERSION_MINOR    12
