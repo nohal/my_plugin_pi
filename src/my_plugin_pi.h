@@ -65,7 +65,7 @@ public:
 	  wxFileConfig     *m_pconfig;
       wxWindow         *m_parent_window;
 	  int              m_leftclick_tool_id;
-	  PlugIn_ViewPort *m_vp;
+	  PlugIn_ViewPort  m_vp;
 	  
 	
 	  
@@ -74,7 +74,7 @@ public:
 	  
 	  bool PointInLLBox( PlugIn_ViewPort *vp, double x, double y );
 	  
-	 
+    void initLoginDialog(wxWindow* parent);
 };
 
 

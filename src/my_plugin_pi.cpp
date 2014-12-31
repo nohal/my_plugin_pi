@@ -235,14 +235,14 @@ void my_plugin_pi::OnToolbarToolCallback(int id)
 
 bool my_plugin_pi::RenderOverlay(wxDC &dc, PlugIn_ViewPort *vp)
 {
-    m_vp = vp;
-    return false;
+    m_vp = *vp;
+    return true;
 }
 
 bool my_plugin_pi::RenderGLOverlay(wxGLContext *pcontext, PlugIn_ViewPort *vp)
 {
-    
-    return false;
+    m_vp = *vp;
+    return true;
 }
 
 void my_plugin_pi::SetCursorLatLon(double lat, double lon)
@@ -252,7 +252,7 @@ void my_plugin_pi::SetCursorLatLon(double lat, double lon)
 		return ;
 		
 	wxPoint cur;
-    GetCanvasPixLL( m_vp, &cur, lat, lon );
+    GetCanvasPixLL( &m_vp, &cur, lat, lon );
 	
 	
 	
@@ -261,13 +261,13 @@ void my_plugin_pi::SetCursorLatLon(double lat, double lon)
 	{
 		PlugIn_Waypoint *marker = it->second;
 		
-		 if(  PointInLLBox( m_vp, marker->m_lat, marker->m_lon ) )
+		 if(  PointInLLBox( &m_vp, marker->m_lat, marker->m_lon ) )
 		 {
 		 
-			wxMessageBox(wxString::Format(wxT("%f"),marker->m_lat) + _T(" ") +wxString::Format(wxT("%f"),marker->m_lon));
+			//wxMessageBox(wxString::Format(wxT("%f"),marker->m_lat) + _T(" ") +wxString::Format(wxT("%f"),marker->m_lon));
 			wxPoint pl;
-            GetCanvasPixLL( m_vp, &pl, marker->m_lat, marker->m_lon );
-            if (pl.x > cur.x - 10 && pl.x < cur.x + 10 && pl.y > cur.y && pl.y < cur.y + 20)
+            GetCanvasPixLL( &m_vp, &pl, marker->m_lat, marker->m_lon );
+            if (pl.x > cur.x - 10 && pl.x < cur.x + 10 && pl.y > cur.y - 10 && pl.y < cur.y + 10)
             {
                 m_ActiveMarker = marker;
                 
@@ -338,6 +338,7 @@ void my_plugin_pi::SendTimelineMessage(wxDateTime time)
 {
    
 }
+
 
 void my_plugin_pi::initLoginDialog(wxWindow* parent)
 {
